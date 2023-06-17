@@ -1,0 +1,30 @@
+org: thathardwareguy
+app: lambda-data-filter
+service: lambda-data-filter
+
+plugins:
+  - serverless-esbuild
+
+custom:
+  esbuild:
+    bundle: true
+    minify: false
+    
+package:
+  individually: true
+
+provider:
+  name: aws 
+  runtime: nodejs14.x
+  stage: ${opt:stage,'us-east-2'}
+
+functions:
+  awsIotPostgresIntegration:
+    handler: dist/index.handler
+    events:
+      - iot:
+          sql: "SELECT * FROM 'metrics/gendata'"
+          name: "IotPostgresRule"
+          description: "Forwards IoT data to Postgres database via AWS Lambda"
+          sqlVersion: "2016-03-23"
+   
