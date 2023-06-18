@@ -24,6 +24,8 @@ jobs:
       - name: Install npm
         run: npm install -g npm@8.15.1
 
+      - name: Install Serverless esbuild plugin
+        run: serverless plugin install -n serverless-esbuild
       - name: Deploy
         if: github.ref == 'refs/heads/main'
         run: serverless deploy --verbose
