@@ -8,7 +8,7 @@ export async function Handler(event: Payload) {
       console.log('Data Source has been set up!');
     })
     .catch((err) => {
-      console.error('Error during Data Source initialization', err);
+      console.error('Error during Data Source initialization. Check config!', err);
     });
   }
   
