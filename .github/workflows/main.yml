@@ -26,6 +26,6 @@ jobs:
 
       - name: Install Serverless esbuild plugin
         run: serverless plugin install -n serverless-esbuild
-      - name: Deploy
+      - name: Deploy zip
         if: github.ref == 'refs/heads/main'
         run: serverless deploy --verbose
