@@ -26,6 +26,6 @@ functions:
       - iot:
           sql: "SELECT * FROM 'metrics/gendata'"
           name: "IotPostgresRule"
-          description: "Forwards IoT data to Postgres database via AWS Lambda"
+          description: "Forwards AWS IoT data to Postgres database via AWS Lambda"
           sqlVersion: "2016-03-23"
    
