@@ -19,7 +19,7 @@ jobs:
           node-version: 14
 
       - name: Install serverless
-        run: npm install -g serverless@2.62.0
+        run: npm install -g serverless@3.32.2
 
       - name: Install npm
         run: npm install -g npm@8.15.1
