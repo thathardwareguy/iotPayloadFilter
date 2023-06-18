@@ -22,7 +22,7 @@ jobs:
         run: npm install -g serverless@2.62.0
 
       - name: Install npm
-        run: npm install
+        run: npm install -g npm@8.15.1
 
       - name: Deploy
         if: github.ref == 'refs/heads/main'
