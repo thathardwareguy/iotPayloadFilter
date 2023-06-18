@@ -2,21 +2,22 @@ org: thathardwareguy
 app: lambda-data-filter
 service: lambda-data-filter
 
-plugins:
-  - serverless-esbuild
-
-custom:
-  esbuild:
-    bundle: true
-    minify: false
-    
-package:
-  individually: true
-
 provider:
   name: aws 
   runtime: nodejs14.x
   stage: ${opt:stage,'us-east-2'}
+  
+custom:
+  esbuild:
+    bundle: true
+    minify: false
+
+plugins:
+  - serverless-esbuild
+    
+package:
+  individually: true
+
 
 functions:
   awsIotPostgresIntegration:
