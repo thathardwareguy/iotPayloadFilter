@@ -220,7 +220,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lambda-data-filter/dev/1686792082935-2023-06-15T01:21:22.935Z/lambda-data-filter.zip"
+                "S3Key": "serverless/lambda-data-filter/dev/1703333125029-2023-12-23T12:05:25.029Z/lambda-data-filter.zip"
               },
               "Handler": "s_awsIotPostgresIntegration.handler",
               "Runtime": "nodejs14.x",
@@ -238,14 +238,14 @@
               "AwsIotPostgresIntegrationLogGroup"
             ]
           },
-          "AwsIotPostgresIntegrationLambdaVersion3d1zPLrApqHbR9OJWXfV3TB7OrMtIKgdeAOvkDUxuM": {
+          "AwsIotPostgresIntegrationLambdaVersionotCFxk8L8hyYM7p2llFIJGB8rz0jS93j6GFcdlvw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AwsIotPostgresIntegrationLambdaFunction"
               },
-              "CodeSha256": "Y7dWh1l+4VK1G0IDC24MhNUFpCnvH6Nv0Ut+FJt04Tg="
+              "CodeSha256": "+vdqsfCIeaJFUcAMefKI9NVNa1MkTsofJ2OA85WPClM="
             }
           },
           "AwsIotPostgresIntegrationIotTopicRule1": {
@@ -266,7 +266,7 @@
                     }
                   }
                 ],
-                "Description": "Forwards IoT data to Postgres database via AWS Lambda",
+                "Description": "Forwards AWS IoT data to Postgres database via AWS Lambda",
                 "AwsIotSqlVersion": "2016-03-23"
               },
               "RuleName": "IotPostgresRule"
@@ -307,16 +307,6 @@
                 ]
               }
             }
-          },
-          "CWLSubFilterAwsIotPostgresIntegrationLogGroupUsEast2": {
-            "Type": "AWS::Logs::SubscriptionFilter",
-            "Properties": {
-              "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:dbab522a-cff9-4680-837d-a3cac2b97159#qLgvDQxbtQSDFdmSLC#lambda-data-filter#dev",
-              "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
-              "LogGroupName": {
-                "Ref": "AwsIotPostgresIntegrationLogGroup"
-              }
-            }
           }
         },
         "Outputs": {
@@ -342,7 +332,7 @@
           "AwsIotPostgresIntegrationLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AwsIotPostgresIntegrationLambdaVersion3d1zPLrApqHbR9OJWXfV3TB7OrMtIKgdeAOvkDUxuM"
+              "Ref": "AwsIotPostgresIntegrationLambdaVersionotCFxk8L8hyYM7p2llFIJGB8rz0jS93j6GFcdlvw"
             },
             "Export": {
               "Name": "sls-lambda-data-filter-dev-AwsIotPostgresIntegrationLambdaFunctionQualifiedArn"
@@ -434,13 +424,8 @@
       },
       "vpc": {}
     },
-    "custom": {
-      "serverlessPluginTypescript": {
-        "tsConfigFileLocation": "./tsconfig.json"
-      }
-    },
     "plugins": [
-      "serverless-plugin-typescript"
+      "serverless-webpack"
     ],
     "pluginsData": {},
     "functions": {
@@ -451,24 +436,20 @@
             "iot": {
               "sql": "SELECT * FROM 'metrics/gendata'",
               "name": "IotPostgresRule",
-              "description": "Forwards IoT data to Postgres database via AWS Lambda",
+              "description": "Forwards AWS IoT data to Postgres database via AWS Lambda",
               "sqlVersion": "2016-03-23"
             }
           }
         ],
         "name": "lambda-data-filter-dev-awsIotPostgresIntegration",
         "package": {
-          "exclude": [
-            "node_modules/serverless-plugin-typescript"
-          ],
-          "include": [],
-          "patterns": []
+          "artifact": ".serverless\\lambda-data-filter.zip"
         },
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "AwsIotPostgresIntegrationLambdaVersion3d1zPLrApqHbR9OJWXfV3TB7OrMtIKgdeAOvkDUxuM"
+        "versionLogicalId": "AwsIotPostgresIntegrationLambdaVersionotCFxk8L8hyYM7p2llFIJGB8rz0jS93j6GFcdlvw"
       }
     },
     "configValidationMode": "warn",
@@ -479,9 +460,6 @@
       "service": "lambda-data-filter",
       "plugins": {
         "$ref": "$[\"service\"][\"plugins\"]"
-      },
-      "custom": {
-        "$ref": "$[\"service\"][\"custom\"]"
       },
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
@@ -496,11 +474,10 @@
     "isDashboardMonitoringPreconfigured": true,
     "isDashboardAppPreconfigured": true,
     "orgUid": "dbab522a-cff9-4680-837d-a3cac2b97159",
-    "appUid": "qLgvDQxbtQSDFdmSLC",
-    "artifact": "C:\\Users\\hp\\Desktop\\awsIotDeveloper\\cloudEngineering\\iotPayloadFilter\\.build\\.serverless\\lambda-data-filter.zip"
+    "appUid": "qLgvDQxbtQSDFdmSLC"
   },
   "package": {
-    "artifactDirectoryName": "serverless/lambda-data-filter/dev/1686792082935-2023-06-15T01:21:22.935Z",
-    "artifact": "lambda-data-filter.zip"
+    "artifactDirectoryName": "serverless/lambda-data-filter/dev/1703333125029-2023-12-23T12:05:25.029Z",
+    "artifact": ""
   }
 }

@@ -1,2 +1,5 @@
 node_modules
 deploy
+lambda-data-filter.zip
+cloudformation-template-update-stack.json
+cloudformation-template-create-stack.json

@@ -1,6 +1,6 @@
 export interface Payload {
-    deviceName:       string;
-    deviceType:       string;
+    deviceID:       string;
+    clientId:       string;
     status:           number;
     vPhase1:          number;
     vPhase2:          number;
@@ -19,7 +19,7 @@ export interface Payload {
     KWh:              number;
     signalStrenght:   number; //signalStrenght
   };
-  
+  /*
   export interface ENVTYPES {
     username: string;
     host: string;
@@ -27,7 +27,8 @@ export interface Payload {
     password: string;
     port: number;
   };
-  
+  */
+  /*
   export const vars: ENVTYPES = {
     username: process.env.USERNAME ?? '',
     host: process.env.HOST ?? '',
@@ -35,4 +36,4 @@ export interface Payload {
     password: process.env.PASSWORD ?? '',
     port: Number(process.env.PORT ?? '5432')
   }
-  
+  */

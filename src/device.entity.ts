@@ -6,57 +6,57 @@ export class SmartGen {
   id: string;
 
   @Column()
-  deviceName: string;
+  deviceID: string;
 
   @Column()
-  deviceType: string;
+  clientId: string;
 
   @Column()
   status: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   vPhase1: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   vPhase2: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   vPhase3: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   I1: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   I2: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   I3: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   realPower1: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   realPower2: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   realPower3: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   apparentPower1: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   apparentPower2: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   apparentPower3: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   powerFactor: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   frequency: number;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   kwh: number;
 
   @Column()

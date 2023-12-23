@@ -15,8 +15,8 @@ export async function Handler(event: Payload) {
   const smartGenRepository = AppDataSource.getRepository(SmartGen);
   const newDataEntry = smartGenRepository.create();
 
-  newDataEntry.deviceName = event.deviceName;
-  newDataEntry.deviceType = event.deviceType;
+  newDataEntry.deviceID = event.deviceID;
+  newDataEntry.clientId = event.clientId;
   newDataEntry.status = event.status;
   newDataEntry.vPhase1 = event.vPhase1;
   newDataEntry.vPhase2 = event.vPhase2;
@@ -31,8 +31,8 @@ export async function Handler(event: Payload) {
   newDataEntry.realPower2 = event.realPower2;
   newDataEntry.realPower3 = event.realPower3;
   newDataEntry.powerFactor = event.powerFactor;
-  newDataEntry.frequency = event.frequency;
-  newDataEntry.kwh = event.KWh; // KWh
+  newDataEntry.frequency = 10 * event.frequency;
+  newDataEntry.kwh = event.KWh;
   newDataEntry.signalStrength = event.signalStrenght;
 
   await smartGenRepository.save(newDataEntry);

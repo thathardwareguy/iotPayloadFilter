@@ -10,13 +10,13 @@ async function Handler(event) {
             console.log('Data Source has been set up!');
         })
             .catch((err) => {
-            console.error('Error during Data Source initialization', err);
+            console.error('Error during Data Source initialization. Check config!', err);
         });
     }
     const smartGenRepository = database_1.AppDataSource.getRepository(device_entity_1.SmartGen);
     const newDataEntry = smartGenRepository.create();
-    newDataEntry.deviceName = event.deviceName;
-    newDataEntry.deviceType = event.deviceType;
+    newDataEntry.deviceID = event.deviceID;
+    newDataEntry.clientId = event.clientId;
     newDataEntry.status = event.status;
     newDataEntry.vPhase1 = event.vPhase1;
     newDataEntry.vPhase2 = event.vPhase2;
@@ -31,7 +31,7 @@ async function Handler(event) {
     newDataEntry.realPower2 = event.realPower2;
     newDataEntry.realPower3 = event.realPower3;
     newDataEntry.powerFactor = event.powerFactor;
-    newDataEntry.frequency = event.frequency;
+    newDataEntry.frequency = 10 * event.frequency;
     newDataEntry.kwh = event.KWh;
     newDataEntry.signalStrength = event.signalStrenght;
     await smartGenRepository.save(newDataEntry);
