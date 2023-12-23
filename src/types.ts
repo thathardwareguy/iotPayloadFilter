@@ -17,7 +17,7 @@ export interface Payload {
     powerFactor:      number;
     frequency:        number;
     KWh:              number;
-    signalStrenght:   number; //signalStrenght
+    signalStrenght:   number; 
   };
   /*
   export interface ENVTYPES {
