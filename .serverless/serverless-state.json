@@ -220,7 +220,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lambda-data-filter/dev/1703333125029-2023-12-23T12:05:25.029Z/lambda-data-filter.zip"
+                "S3Key": "serverless/lambda-data-filter/dev/1703670809328-2023-12-27T09:53:29.328Z/lambda-data-filter.zip"
               },
               "Handler": "s_awsIotPostgresIntegration.handler",
               "Runtime": "nodejs14.x",
@@ -238,14 +238,14 @@
               "AwsIotPostgresIntegrationLogGroup"
             ]
           },
-          "AwsIotPostgresIntegrationLambdaVersionotCFxk8L8hyYM7p2llFIJGB8rz0jS93j6GFcdlvw": {
+          "AwsIotPostgresIntegrationLambdaVersioni3qoirmPb87rj4dMHGUxgCv7zRIcgpyLP5VqXto": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AwsIotPostgresIntegrationLambdaFunction"
               },
-              "CodeSha256": "+vdqsfCIeaJFUcAMefKI9NVNa1MkTsofJ2OA85WPClM="
+              "CodeSha256": "fkzAMHoTvnrwks+ceYHxXIauWh6QL5RYKe9MvJTYKrY="
             }
           },
           "AwsIotPostgresIntegrationIotTopicRule1": {
@@ -332,7 +332,7 @@
           "AwsIotPostgresIntegrationLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AwsIotPostgresIntegrationLambdaVersionotCFxk8L8hyYM7p2llFIJGB8rz0jS93j6GFcdlvw"
+              "Ref": "AwsIotPostgresIntegrationLambdaVersioni3qoirmPb87rj4dMHGUxgCv7zRIcgpyLP5VqXto"
             },
             "Export": {
               "Name": "sls-lambda-data-filter-dev-AwsIotPostgresIntegrationLambdaFunctionQualifiedArn"
@@ -449,7 +449,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "AwsIotPostgresIntegrationLambdaVersionotCFxk8L8hyYM7p2llFIJGB8rz0jS93j6GFcdlvw"
+        "versionLogicalId": "AwsIotPostgresIntegrationLambdaVersioni3qoirmPb87rj4dMHGUxgCv7zRIcgpyLP5VqXto"
       }
     },
     "configValidationMode": "warn",
@@ -477,7 +477,7 @@
     "appUid": "qLgvDQxbtQSDFdmSLC"
   },
   "package": {
-    "artifactDirectoryName": "serverless/lambda-data-filter/dev/1703333125029-2023-12-23T12:05:25.029Z",
+    "artifactDirectoryName": "serverless/lambda-data-filter/dev/1703670809328-2023-12-27T09:53:29.328Z",
     "artifact": ""
   }
 }

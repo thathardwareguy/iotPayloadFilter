@@ -1,40 +1,55 @@
+import { validateOrReject, ValidationError } from 'class-validator';
 import { AppDataSource } from "./database";
 import { SmartGen } from "./device.entity";
 import { Payload } from "./types";
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
 export async function Handler(event: Payload) {
-  if(!AppDataSource.isInitialized){
-    await AppDataSource.initialize()
-    .then(() => {
-      console.log('Data Source has been set up!');
-    })
-    .catch((err) => {
-      console.error('Error during Data Source initialization. Check config!', err);
-    });
+  try {
+    await validateOrReject(event);
+    console.log('Validation successful!');
+
+    await initializeDataSource();
+    const savedData = await createAndSaveSmartGen(event);
+    return { success: true, data: savedData };
+  } catch (errors) {
+    console.error('Validation failed. Errors: ', errors);
+
+    if (errors instanceof Array && errors.length > 0 && errors[0] instanceof ValidationError) {
+      console.error('First validation error: ', errors[0].toString());
+    }
+
+    return { success: false, error: 'Validation failed' };
+  }
+}
+
+async function initializeDataSource() {
+	try {
+	  if (!AppDataSource.isInitialized) {
+		await AppDataSource.initialize();
+		console.log('Data Source has been set up!');
+	  }
+	} catch (err) {
+	  console.error('Error during Data Source initialization. Check config!', err);
+	  throw err; 
+	}
   }
   
-  const smartGenRepository = AppDataSource.getRepository(SmartGen);
-  const newDataEntry = smartGenRepository.create();
-
-  newDataEntry.deviceID = event.deviceID;
-  newDataEntry.clientId = event.clientId;
-  newDataEntry.status = event.status;
-  newDataEntry.vPhase1 = event.vPhase1;
-  newDataEntry.vPhase2 = event.vPhase2;
-  newDataEntry.vPhase3 = event.vPhase3;
-  newDataEntry.I1 = event.I1;
-  newDataEntry.I2 = event.I2;
-  newDataEntry.I3 = event.I3;
-  newDataEntry.apparentPower1 = event.apparentPower1;
-  newDataEntry.apparentPower2 = event.apparentPower2;
-  newDataEntry.apparentPower3 = event.apparentPower3;
-  newDataEntry.realPower1 = event.realPower1;
-  newDataEntry.realPower2 = event.realPower2;
-  newDataEntry.realPower3 = event.realPower3;
-  newDataEntry.powerFactor = event.powerFactor;
-  newDataEntry.frequency = 10 * event.frequency;
-  newDataEntry.kwh = event.KWh;
-  newDataEntry.signalStrength = event.signalStrenght;
-
-  await smartGenRepository.save(newDataEntry);
-  return newDataEntry;
-};
+  async function createAndSaveSmartGen(event: Payload) {
+	const { frequency, ...rest } = event;
+	const smartGenRepository = AppDataSource.getRepository(SmartGen);
+	const newDataEntry = smartGenRepository.create(rest);
+	newDataEntry.frequency = 10 * frequency;
+  
+	try {
+	  const savedData = await smartGenRepository.save(newDataEntry);
+	  console.log('Data saved to the database:', savedData);
+	  return savedData;
+	} catch (err) {
+	  console.error('Error saving to the database:', err);
+	  throw err; 
+	}
+  }
+  

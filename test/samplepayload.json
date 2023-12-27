@@ -1,0 +1,21 @@
+{
+	"deviceID": "GEN-0200-2023",
+	"clientId": "SN-322-232",
+	"status": 1,
+	"vPhase1": 235.1,
+	"vPhase2": 232.5,
+	"vPhase3": 232.8,
+	"I1": 0,
+	"I2": 0,
+	"I3": 0,
+	"realPower1": 0,
+	"realPower2": 0,
+	"realPower3": 0,
+	"apparentPower1": 0,
+	"apparentPower2": 0,
+	"apparentPower3": 0,
+	"powerFactor": 1,
+	"frequency": 5.01,
+	"kwh": 2621.64,
+	"signalStrength": 30
+  }
