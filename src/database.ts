@@ -13,9 +13,7 @@ export const DbConfig: DataSourceOptions = {
 	synchronize: true,
 	logging: false,
 	entities: [SmartGen],
-	ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined,
-	// migrations: ['dist/migration/*{.ts,.js}'],
-	// subscribers: ['subscriber/**/*.ts'],
+	ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined
   };
   
 export const AppDataSource = new DataSource({ ...DbConfig });
